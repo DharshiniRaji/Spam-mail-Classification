@@ -1,0 +1,81 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Mail Classifier</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #5D3FD3;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #5D3FD3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #4e32b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Spam Mail Classifier</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <textarea id="textarea" placeholder="Enter your mail" name="email" rows="15" cols="100"></textarea><br>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction is not None %}
+        <h1>Email Prediction Result</h1>
+        {% if prediction == 0 %}
+        <p>It's a spam mail</p>
+        {% else %}
+        <p>It's a ham mail</p>
+        {% endif %}
+        <a href="{% url 'spam_or_not:home' %}">Predict Another Email</a>
+        {% endif %}
+    </div>
+</body>
+
+</html>
