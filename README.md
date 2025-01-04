@@ -16,7 +16,7 @@ A Django-based web application for classifying emails as spam or not spam. This 
 ###1. Clone the Repository
 Clone the project to your local machine:
 
-git clone https://github.com/your-username/Spam-mail-Classification.git
+git clone https://github.com/DharshiniRaji/Spam-mail-Classification.git
 cd Spam-mail-Classification
 
 ### 2. Apply Migrations
